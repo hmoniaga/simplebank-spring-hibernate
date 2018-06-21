@@ -1,14 +1,12 @@
 package com.scb.simplebank.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "T_Client")
-@JsonAppend(attrs = {@JsonAppend.Attr(value = "accountIds")})
 public class Client {
 
     @Id
@@ -26,7 +24,8 @@ public class Client {
     @JoinColumn(name = "client_id")
     private List<Account> accounts;
 
-    public Client() { }
+    public Client() {
+    }
 
     public Client(String firstName, String lastName) {
         this.firstName = firstName;

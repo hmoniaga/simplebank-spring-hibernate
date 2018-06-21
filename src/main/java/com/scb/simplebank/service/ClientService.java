@@ -21,15 +21,19 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    // find all clients
+    /**
+     * Find all client entries
+     */
     public List<Client> findAll() {
-        LOGGER.debug("Finding all client entries");
+        LOGGER.debug("ClientService: findAll");
         return clientRepository.findAll();
     }
 
-    // find client with an id
+    /**
+     * Find client by a specific id
+     */
     public Client findById(Long id) {
-        LOGGER.debug("Finding client with id: {}", id);
+        LOGGER.debug("ClientService: findById {}", id);
         Client found = clientRepository.findOne(id);
         if (found == null) {
             throw new ClientNotFoundException("No client found with id: " + id);
@@ -37,14 +41,23 @@ public class ClientService {
         return found;
     }
 
-    // find client accounts with an id
+    /**
+     * Find all accounts belonging to a client
+     */
     public List<Account> findAccounts(Long id) {
-        return findById(id).getAccounts();
+        LOGGER.debug("ClientService: findAccounts {}", id);
+        Client found = clientRepository.findOne(id);
+        if (found == null) {
+            throw new ClientNotFoundException("No client found with id: " + id);
+        }
+        return found.getAccounts();
     }
 
-    // find specific account id
+    /**
+     * Find details of a specific account
+     */
     public Account findAccountById(Long clientId, Long accountId) {
-        LOGGER.debug("Finding account with clientId: {}, accountId: {}", clientId, accountId);
+        LOGGER.debug("ClientService: findAccountById clientId: {}, accountId: {}", clientId, accountId);
         Optional<Account> opt = findById(clientId).getAccounts().stream().filter(a -> a.getId() == accountId).findFirst();
         if (!opt.isPresent()) {
             throw new AccountNotFoundException("No account found with id: " + accountId);

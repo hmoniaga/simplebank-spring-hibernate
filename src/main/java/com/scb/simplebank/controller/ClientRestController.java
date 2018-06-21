@@ -17,18 +17,18 @@ public class ClientRestController {
     @Autowired
     private ClientService service;
 
-    @RequestMapping(value="/clients", method=RequestMethod.GET)
+    @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public List<Client> findAll() {
         return this.service.findAll();
     }
 
     @RequestMapping(value = "/clients/{clientId}", method = RequestMethod.GET)
-    public Client findById(@PathVariable("clientId") Long id)  {
+    public Client findById(@PathVariable("clientId") Long id) {
         return this.service.findById(id);
     }
 
     @RequestMapping(value = "/clients/{clientId}/accounts", method = RequestMethod.GET)
-    public List<Account> findAccounts(@PathVariable("clientId") Long id)  {
+    public List<Account> findAccounts(@PathVariable("clientId") Long id) {
         return this.service.findAccounts(id);
     }
 

@@ -10,11 +10,12 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double balance;
-
     private String name;
 
-    public Account() { }
+    private Double balance;
+
+    public Account() {
+    }
 
     public Long getId() {
         return id;

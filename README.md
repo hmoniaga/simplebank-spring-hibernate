@@ -1,14 +1,14 @@
 # Simple Bank
 
-## Goal
+## Summary
 
-Sample spring/hibernate with REST API
+Simple banking API, built using spring/hibernate
 
 ## APIs
 
 - List down all clients: `GET /clients`
 - Show client details: `GET /clients/{clientId}`
-- Show all accounts: `GET /clients/{clientId}/accounts`
+- Show all accounts details: `GET /clients/{clientId}/accounts`
 
 ## Samples
 
